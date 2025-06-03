@@ -27,10 +27,16 @@ public class TransaksiMain {
     public static void main(String[] args) {
 
         BBM[] bbm = new BBM[4];
-        bbm[0] = new BBM("Petalite", 10000);
+        bbm[0] = new BBM("Pertalite", 10000);
         bbm[1] = new BBM("Pertamax", 12400);
         bbm[2] = new BBM("Biosolat", 6800);
         bbm[3] = new BBM("Dexlite", 13400);
+
+        kll.addDataKendaraan(new Kendaraan("B 12345", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("C 12346", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("D 12347", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("G 12348", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("Z 12349", "Mobil", "Toyota"));
 
         while (true) {
             System.out.println("===  SISTEM ANTRIAN SPBU ===");
@@ -96,6 +102,7 @@ public class TransaksiMain {
                     tll.showTransaksi();
                     break;
                 case 6:
+                    tll.sortTransaksi();
                     break;
                 case 0:
                     System.out.println("Terima kasih telah menggunakan program ini!");

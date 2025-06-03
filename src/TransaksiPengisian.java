@@ -12,7 +12,7 @@ public class TransaksiPengisian {
     }
 
     void showInfo() {
-        System.out.printf("%-20s %-20s %-20d %-20f", this.kendaraan.platNomor, this.kendaraan.tipe, this.liter,
+        System.out.printf("%-20s %-20s %-20d %-20.2f", this.kendaraan.platNomor, this.kendaraan.tipe, this.liter,
                 this.totalBayar);
     }
 
