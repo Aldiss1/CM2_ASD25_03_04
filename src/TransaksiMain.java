@@ -23,20 +23,7 @@ public class TransaksiMain {
         return new BBM(jenis, liter);
     }
 
-    static void layaniKendaraan() {
-        if (kll.isEmpty()) {
-            System.out.println("Antrian kosong!");
-            return;
-        }
-        Kendaraan kendaraan = kll.head.data;
-        BBM bbm = inputDataBBM();
-        double totalBayar = bbm.getHargaPerLiter() * bbm.getHargaPerLiter();
-        TransaksiPengisian transaksi = new TransaksiPengisian(kendaraan, bbm, bbm.getHargaPerLiter(), totalBayar);
-        transaksi.layaniKendaraan();
-        kll.head = kll.head.next;
-        kll.size--;
-    }
-
+    
     public static void main(String[] args) {
         while (true) {
             System.out.println("===  SISTEM ANTRIAN SPBU ===");
@@ -63,7 +50,6 @@ public class TransaksiMain {
                     System.out.println(">> Sisa antrian: " + kll.getAntrian());
                     break;
                 case 4:
-                    layaniKendaraan();
                     break;
                 case 5:
                     break;

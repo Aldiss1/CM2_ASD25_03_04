@@ -39,4 +39,6 @@ public class KendaraanLL {
         return this.size;
     }
 
+    
+
 }
