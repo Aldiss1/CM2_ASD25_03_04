@@ -35,10 +35,19 @@ public class KendaraanLL {
         }
     }
 
+    public NodeKendaraan removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Antrian Kosong");
+            return null;
+        } else {
+            NodeKendaraan curr = head;
+            head = head.next;
+            return curr;
+        }
+    }
+
     int getAntrian() {
         return this.size;
     }
-
-    
 
 }

@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class TransaksiMain {
     static Scanner CM = new Scanner(System.in);
     static KendaraanLL kll = new KendaraanLL();
+    static TransaksiLL tll = new TransaksiLL();
 
     static Kendaraan inputDataKendaraan() {
         System.out.print("Input Plat Nomor : ");
@@ -23,8 +24,15 @@ public class TransaksiMain {
         return new BBM(jenis, liter);
     }
 
-    
     public static void main(String[] args) {
+
+        BBMLL nodeBBM = new BBMLL();
+
+        nodeBBM.addFirst(new BBM("Petalite", 10000));
+        nodeBBM.addFirst(new BBM("Pertamax", 12400));
+        nodeBBM.addFirst(new BBM("Biosolat", 6800));
+        nodeBBM.addFirst(new BBM("Dexlite", 13400));
+
         while (true) {
             System.out.println("===  SISTEM ANTRIAN SPBU ===");
             System.out.println("1. Tambah Antrian");
@@ -50,6 +58,12 @@ public class TransaksiMain {
                     System.out.println(">> Sisa antrian: " + kll.getAntrian());
                     break;
                 case 4:
+                    NodeKendaraan node = kll.removeFirst();
+                    if (node != null) {
+                        tll.layaniKendaraan(node, nodeBBM, CM);
+                    } else {
+                        System.out.println("Tidak ada kendaraan dalam antrian.");
+                    }
                     break;
                 case 5:
                     break;
