@@ -19,4 +19,25 @@ public class KendaraanLL {
         System.out.println(">> Kendaraan masuk ke dalam antrian");
     }
 
+    void showAntrian() {
+        if (isEmpty()) {
+            System.out.println("Tidak ada antrian");
+            return;
+        } else {
+            NodeKendaraan current = head;
+
+            System.out.printf("%-20s %-20s %-20s", "Plan Nomor", "Jenis", "Merk");
+            System.out.println();
+            while (current != null) {
+                current.data.showInfo();
+                System.out.println();
+                current = current.next;
+            }
+        }
+    }
+
+    int getAntrian() {
+        return this.size;
+    }
+
 }

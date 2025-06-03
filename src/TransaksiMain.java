@@ -1,8 +1,20 @@
 import java.util.Scanner;
 
 public class TransaksiMain {
+    static Scanner CM = new Scanner(System.in);
+
+    Kendaraan inputDataKendaraan() {
+        System.out.print("Input Plat Nomor : ");
+        String plat = CM.nextLine();
+        System.out.print("Input Jenis Kendaraan : ");
+        String jenis = CM.nextLine();
+        System.out.print("Input Merk : ");
+        String merk = CM.nextLine();
+
+        return new Kendaraan(plat, jenis, merk);
+    }
+
     public static void main(String[] args) {
-        Scanner CM = new Scanner(System.in);
 
         System.out.println("===  SISTEM ANTRIAN SPBU ===");
         System.out.println("1. Tambah Antrian");
@@ -18,6 +30,7 @@ public class TransaksiMain {
 
         switch (pilihan) {
             case 1:
+
                 break;
             case 2:
                 break;
@@ -36,7 +49,7 @@ public class TransaksiMain {
             default:
                 System.out.println("Pilihan tidak valid!");
         }
-        
+
         CM.close();
     }
 }
