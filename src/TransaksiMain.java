@@ -54,10 +54,13 @@ public class TransaksiMain {
 
             switch (pilihan) {
                 case 1:
+                    kll.addDataKendaraan(inputDataKendaraan());
                     break;
                 case 2:
+                    kll.showAntrian();
                     break;
                 case 3:
+                    System.out.println(">> Sisa antrian: " + kll.getAntrian());
                     break;
                 case 4:
                     layaniKendaraan();
