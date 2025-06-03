@@ -33,10 +33,10 @@ public class TransaksiMain {
         bbm[3] = new BBM("Dexlite", 13400);
 
         kll.addDataKendaraan(new Kendaraan("B 12345", "Mobil", "Toyota"));
-        kll.addDataKendaraan(new Kendaraan("C 12346", "Mobil", "Toyota"));
-        kll.addDataKendaraan(new Kendaraan("D 12347", "Mobil", "Toyota"));
-        kll.addDataKendaraan(new Kendaraan("G 12348", "Mobil", "Toyota"));
-        kll.addDataKendaraan(new Kendaraan("Z 12349", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("L 12346", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("F 12347", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("D 12348", "Mobil", "Toyota"));
+        kll.addDataKendaraan(new Kendaraan("J 12349", "Mobil", "Toyota"));
 
         while (true) {
             System.out.println("===  SISTEM ANTRIAN SPBU ===");
@@ -67,34 +67,36 @@ public class TransaksiMain {
                     if (node == null) {
                         System.out.println("Kendaraan Kosong");
                         return;
-                    }
-                    System.out.println("Kendaraan " + node.data.platNomor);
-                    System.out.println("Daftar Jenis BBM");
-                    for (int i = 0; i < bbm.length; i++) {
-                        bbm[i].showInfo();
-                        System.out.println();
-                    }
-
-                    System.out.print("Input Jenis BBM: ");
-                    String jenis = CM.nextLine();
-                    System.out.print("Input Jumlah Liter: ");
-                    int jml = CM.nextInt();
-                    CM.nextLine();
-
-                    boolean found = false;
-                    double bayar = 0;
-                    for (int i = 0; i < bbm.length; i++) {
-                        if (bbm[i].namaBBM.equalsIgnoreCase(jenis)) {
-                            bayar = bbm[i].hargaPerLiter * jml;
-                            System.out.println();
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found) {
-                        tll.addFirst(new TransaksiPengisian(node.data, jml, bayar));
                     } else {
-                        System.out.println("Tidak Ditemukan Jenis BBM");
+                        System.out.println("Kendaraan " + node.data.platNomor);
+                        System.out.println("Daftar Jenis BBM");
+                        for (int i = 0; i < bbm.length; i++) {
+                            bbm[i].showInfo();
+                            System.out.println();
+                        }
+
+                        System.out.print("Input Jenis BBM: ");
+                        String jenis = CM.nextLine();
+                        System.out.print("Input Jumlah Liter: ");
+                        int jml = CM.nextInt();
+                        CM.nextLine();
+
+                        boolean found = false;
+                        double bayar = 0;
+                        int i =0;
+                        for (i  = 0; i < bbm.length; i++) {
+                            if (bbm[i].namaBBM.equalsIgnoreCase(jenis)) {
+                                bayar = bbm[i].hargaPerLiter * jml;
+                                System.out.println();
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found) {
+                            tll.addFirst(new TransaksiPengisian(node.data, bbm[i].namaBBM, bayar));
+                        } else {
+                            System.out.println("Tidak Ditemukan Jenis BBM");
+                        }
                     }
 
                     break;
