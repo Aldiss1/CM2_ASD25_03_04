@@ -11,6 +11,10 @@ public class BBM {
         return namaBBM;
     }
 
+    public double getHargaPerLiter() {
+        return hargaPerLiter;
+    }
+
     void showInfo() {
         System.out.printf("%-20s %-20f", namaBBM, hargaPerLiter);
     }
@@ -18,9 +22,8 @@ public class BBM {
     public static BBM[] getDataBBM() {
         BBM[] dataBBM = {
                 new BBM("Pertalite", 10000),
-                new BBM("Pertamax", 13000),
-                new BBM("Pertamax Turbo", 15000),
-                new BBM("Dexlite", 13500),
+                new BBM("Pertamax", 12400),
+                new BBM("Dexlite", 13400),
                 new BBM("Solar", 6800)
         };
         return dataBBM;

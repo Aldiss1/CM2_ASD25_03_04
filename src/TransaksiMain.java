@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class TransaksiMain {
     static Scanner CM = new Scanner(System.in);
+    static KendaraanLL kll = new KendaraanLL();
 
     static Kendaraan inputDataKendaraan() {
         System.out.print("Input Plat Nomor : ");
@@ -14,9 +15,29 @@ public class TransaksiMain {
         return new Kendaraan(plat, jenis, merk);
     }
 
-    public static void main(String[] args) {
-        KendaraanLL kll = new KendaraanLL();
+    static BBM inputDataBBM() {
+        System.out.print("Input Jenis BBM : ");
+        String jenis = CM.nextLine();
+        System.out.print("Input jumlah liter : ");
+        double liter = CM.nextDouble();
+        return new BBM(jenis, liter);
+    }
 
+    static void layaniKendaraan() {
+        if (kll.isEmpty()) {
+            System.out.println("Antrian kosong!");
+            return;
+        }
+        Kendaraan kendaraan = kll.head.data;
+        BBM bbm = inputDataBBM();
+        double totalBayar = bbm.getHargaPerLiter() * bbm.getHargaPerLiter();
+        TransaksiPengisian transaksi = new TransaksiPengisian(kendaraan, bbm, bbm.getHargaPerLiter(), totalBayar);
+        transaksi.layaniKendaraan();
+        kll.head = kll.head.next;
+        kll.size--;
+    }
+
+    public static void main(String[] args) {
         while (true) {
             System.out.println("===  SISTEM ANTRIAN SPBU ===");
             System.out.println("1. Tambah Antrian");
@@ -33,13 +54,13 @@ public class TransaksiMain {
 
             switch (pilihan) {
                 case 1:
-
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
                 case 4:
+                    layaniKendaraan();
                     break;
                 case 5:
                     break;
@@ -52,7 +73,6 @@ public class TransaksiMain {
                 default:
                     System.out.println("Pilihan tidak valid!");
             }
-
         }
     }
 }
