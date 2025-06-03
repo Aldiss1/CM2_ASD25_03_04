@@ -1,6 +1,6 @@
 public class KendaraanLL {
     int size;
-    NodeKendaraan head, tail;
+    NodeKendaraan head;
 
     boolean isEmpty() {
         return head == null;
@@ -9,10 +9,9 @@ public class KendaraanLL {
     void addDataKendaraan(Kendaraan data) {
         NodeKendaraan newNode = new NodeKendaraan(data, null);
         if (isEmpty()) {
-            head = tail = newNode;
+            head = newNode;
         } else {
             newNode.next = head;
-            tail = head;
             head = newNode;
         }
         size++;
