@@ -1,5 +1,4 @@
 
-import java.util.Scanner;
 
 public class TransaksiLL {
     NodeTransaksi head;
@@ -20,35 +19,21 @@ public class TransaksiLL {
         this.size++;
     }
 
-    void layaniKendaraan(NodeKendaraan node, BBMLL data, Scanner sc) {
+    void showTransaksi() {
+        if (isEmpty()) {
+            System.out.println("Tidak ada antrian");
+            return;
+        } else {
+            NodeTransaksi current = head;
 
-        System.out.println("Kendaraan " + node.data.platNomor);
-        System.out.println("Daftar Jenis BBM :");
-        System.out.printf("%-20s %-20s", "Jenis BBM", "Harga");
-        System.out.println();
-        NodeBBM currBBM = data.head;
-        while (currBBM != null) {
-            currBBM.data.showInfo();
+            System.out.printf("%-20s %-20s %-20s", "Plan Nomor", "Jenis", "Jenis BBM", "Total Bayar");
             System.out.println();
-            currBBM = currBBM.next;
-        }
-        System.out.print("Input Jenis BBM: ");
-        String jenis = sc.nextLine();
-        System.out.print("Input Jumlah Liter: ");
-        int jml = sc.nextInt();
-        sc.nextLine();
-
-        double totalHargaBBM = 0;
-        NodeBBM searchBBM = data.head;
-        while (searchBBM != null) {
-            if (searchBBM.data.namaBBM.equalsIgnoreCase(jenis)) {
-                totalHargaBBM = jml * searchBBM.data.hargaPerLiter;
+            while (current != null) {
+                current.data.showInfo();
+                System.out.println();
+                current = current.next;
             }
-            searchBBM = searchBBM.next;
         }
-
-        addFirst(new TransaksiPengisian(node.data, jml, totalHargaBBM));
-
     }
 
 }

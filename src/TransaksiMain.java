@@ -26,12 +26,11 @@ public class TransaksiMain {
 
     public static void main(String[] args) {
 
-        BBMLL nodeBBM = new BBMLL();
-
-        nodeBBM.addFirst(new BBM("Petalite", 10000));
-        nodeBBM.addFirst(new BBM("Pertamax", 12400));
-        nodeBBM.addFirst(new BBM("Biosolat", 6800));
-        nodeBBM.addFirst(new BBM("Dexlite", 13400));
+        BBM[] bbm = new BBM[4];
+        bbm[0] = new BBM("Petalite", 10000);
+        bbm[1] = new BBM("Pertamax", 12400);
+        bbm[2] = new BBM("Biosolat", 6800);
+        bbm[3] = new BBM("Dexlite", 13400);
 
         while (true) {
             System.out.println("===  SISTEM ANTRIAN SPBU ===");
@@ -59,13 +58,42 @@ public class TransaksiMain {
                     break;
                 case 4:
                     NodeKendaraan node = kll.removeFirst();
-                    if (node != null) {
-                        tll.layaniKendaraan(node, nodeBBM, CM);
-                    } else {
-                        System.out.println("Tidak ada kendaraan dalam antrian.");
+                    if (node == null) {
+                        System.out.println("Kendaraan Kosong");
+                        return;
                     }
+                    System.out.println("Kendaraan " + node.data.platNomor);
+                    System.out.println("Daftar Jenis BBM");
+                    for (int i = 0; i < bbm.length; i++) {
+                        bbm[i].showInfo();
+                        System.out.println();
+                    }
+
+                    System.out.print("Input Jenis BBM: ");
+                    String jenis = CM.nextLine();
+                    System.out.print("Input Jumlah Liter: ");
+                    int jml = CM.nextInt();
+                    CM.nextLine();
+
+                    boolean found = false;
+                    double bayar = 0;
+                    for (int i = 0; i < bbm.length; i++) {
+                        if (bbm[i].namaBBM.equalsIgnoreCase(jenis)) {
+                            bayar = bbm[i].hargaPerLiter * jml;
+                            System.out.println();
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found) {
+                        tll.addFirst(new TransaksiPengisian(node.data, jml, bayar));
+                    } else {
+                        System.out.println("Tidak Ditemukan Jenis BBM");
+                    }
+
                     break;
                 case 5:
+                    tll.showTransaksi();
                     break;
                 case 6:
                     break;

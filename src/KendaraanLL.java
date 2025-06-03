@@ -42,6 +42,7 @@ public class KendaraanLL {
         } else {
             NodeKendaraan curr = head;
             head = head.next;
+            this.size--;
             return curr;
         }
     }
